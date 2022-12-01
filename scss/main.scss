@@ -1,0 +1,251 @@
+@font-face {
+  font-family: 'HBIOS-SYS';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/HBIOS-SYS.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --main-dark-color: #2e2e2e;
+  font-family: 'HBIOS-SYS', sans-serif;
+}
+
+* {
+  font-family: 'HBIOS-SYS', sans-serif;
+  font-size: 14px;
+  color: var(--main-dark-color);
+}
+
+body {
+  height: 100vh;
+  background: rgb(46,255,67);
+  background: linear-gradient(0deg, rgba(46,255,67,1) 0%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 70%, rgba(46,255,67,1) 100%);
+  .container {
+    position: relative;
+    width: 500px;
+    height: 100vh;
+    margin: 0 auto;
+    header {
+      box-sizing: border-box;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      width: 500px;
+      .todo-name {
+        position: relative;
+        font-family: 'HBIOS-SYS', sans-serif;
+        flex-grow: 3;
+        color: var(--main-dark-color);
+        font-weight: 700;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 20px;
+        .bunny {
+          background-image: url('../static/images/bunny-todo.png');
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 50px;
+          height: 50px;
+        }
+        .bunny-todo {
+          margin-left: 10px;
+          .now-playing {
+            padding: 5px 0;
+            font-size: 14px;
+            text-align: center;
+          }
+        }
+      }
+      .add-todo {
+        position: absolute;
+        flex-grow: 1;
+        border: 2px solid var(--main-dark-color);
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 40px;
+        width: 70px;
+        height: 30px;
+        border-radius: 35px;
+        cursor: pointer;
+        background: rgb(142,194,255);
+        background: linear-gradient(0deg, rgba(142,194,255,1) 0%, rgba(255,255,255,1) 100%);
+      }
+    }
+    .add-todo-modal {
+      position: fixed;
+      visibility: hidden;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, .5);
+      &.visible {
+        visibility: visible;
+        z-index: 9999;
+      }
+      .modal-container {
+        background-color: #fff;
+        border-radius: 20px;
+        border: 2px solid var(--main-dark-color);
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        height: 150px;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        gap: 10px;
+        position: fixed;
+        margin: auto auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        span {
+          font-size: 18px;
+          margin: 10px;
+        }
+        .todo-submit {
+          display: flex;
+          .new-todo {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid var(--main-dark-color);
+            &:focus {
+              outline: none;
+            }
+          }
+          .add-btn {
+            background-color: transparent;
+            border: none;
+            margin-left: 20px;
+            cursor: pointer;
+            font-size: 16px;
+          }
+        }
+        .modal-close {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+    .state-bar {
+      display: flex;
+      width: 500px;
+      height: 70px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-family: 'HBIOS-SYS', sans-serif;
+      .state-btn {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        input {
+          appearance: none;
+          &:checked + label {
+            background-image: url('../static/images/check.png');
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+          }
+        }
+        .state {
+          background-color: #fff;
+          width: 50px;
+          height: 50px;
+          border-radius: 30px;
+          border: 2px solid var(--main-dark-color);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          font-size: 12px;
+          font-weight: 700;
+          cursor: pointer;
+        }
+      }
+    }
+    .todoList {
+      width: 450px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 0 auto;
+      padding: 20px 0;
+      .todo {
+        box-sizing: border-box;
+        width: 400px;
+        height: 100px;
+        background-color: #fff;
+        border: 2px solid var(--main-dark-color);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        &.todo-done-state {
+          background: rgb(142,194,255);
+          background: linear-gradient(0deg, rgba(142,194,255,1) 0%, rgba(255,255,255,1) 100%);
+        }
+        img {
+          width: 50px;
+          height: 50px;
+        }
+        input {
+          background-color: transparent;
+          outline: none;
+          border: none;
+          height: 20px;
+          font-size: 16px;
+          flex-grow: 3;
+        }
+        .state-box {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          .state-btn {
+            .done {
+              background-color: transparent;
+              border: none;
+              cursor: pointer;
+            }
+            .delete {
+              background-color: transparent;
+              border: none;
+              cursor: pointer;
+            }
+          }
+          .editDate {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+    .all-delete {
+      background: rgb(255,0,48);
+      background: linear-gradient(0deg, rgba(255,0,48,0.9556197478991597) 0%, rgba(255,255,255,1) 100%);
+      border: 2px solid var(--main-dark-color);
+      width: 120px;
+      height: 40px;
+      border-radius: 20px;
+      position: absolute;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      cursor: pointer;
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}
