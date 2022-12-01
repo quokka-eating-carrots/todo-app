@@ -7,7 +7,7 @@ export const stateHandler = stateBtns.forEach(state => {
       const todoEl = todoListEl.querySelectorAll('.todo')
       todoEl.forEach(todo => {
         todo.style.display = 'flex'
-        allDeleteBtn.classList.remove('hidden')
+        allDeleteBtn.classList.add('hidden')
       })
     } else if (state.classList.contains('not-done')) {
       const todoEl = todoListEl.querySelectorAll('.todo')
@@ -19,7 +19,7 @@ export const stateHandler = stateBtns.forEach(state => {
       const todoEl = todoListEl.querySelectorAll('.todo')
       todoEl.forEach(todo => {
         todo.style.display = todo.classList.contains('todo-done-state') ? 'flex' : 'none'
-        allDeleteBtn.classList.add('hidden')
+        allDeleteBtn.classList.remove('hidden')
       })
     }
   })

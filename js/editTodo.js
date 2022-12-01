@@ -42,14 +42,12 @@ export const changeTodo = todoListEl.addEventListener('click', event => {
   })
 })
 
-// 전체 삭제 버튼
+// done 전체 삭제 버튼
 allDeleteBtn.addEventListener('click', async () => {
-  const todoList = await getTodo()
-  if (todoList) {
-    todoList.forEach(todo => {
-      const id = todo.id
-      deleteTodo(id)
-      todoListEl.innerHTML = ''
-    })
-  }
+  const todo = todoListEl.querySelectorAll('.todo-done-state')
+  todo.forEach(e => {
+    const id = e.id
+    deleteTodo(id)
+    e.remove()
+  })
 })
