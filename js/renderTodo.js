@@ -27,7 +27,6 @@ export const renderTodo = async () => {
 // 할 일 추가 렌더링
 export const addBtnHandler = addBtn.addEventListener('click', async (e) => {
   e.preventDefault()
-  await getTodo()
   let title = inputEl.value
   let order = (todoListEl.querySelectorAll('.todo').length) + 1
   const todo = await createTodo(title, order)
